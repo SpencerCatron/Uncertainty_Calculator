@@ -6,7 +6,7 @@ public class Version3 {
 	{
 		//gets input
 		Scanner kb = new Scanner(System.in);
-		System.out.println("enter an expression to propagate error for");
+		System.out.println("enter an expression to propagate error for\nDenote +- as x");
 		String input = kb.nextLine();
 		
 		//loop until the user wants to stop putting in values
