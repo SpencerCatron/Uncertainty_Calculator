@@ -2,13 +2,15 @@ package uncertaintycalc;
 
 public class calculate {
 	
+	//the main method for this program. returns the answer to a 
+	//complex expression with parenthesis. or any type of expression with error in it
 	public static String Calculate(String input)
 	{
 		String left = "null";
 		String calc = "null";
 		String right = "null";
 
-			//go through getting rid of all parenthesis
+			//go through getting rid of all parenthesis and simplifying
 		while(calculate.parenthesisboolean(input) ==true)
 		{
 			
@@ -21,9 +23,11 @@ public class calculate {
 			input = calculate.addstrings(left, calc, right);
 		}
 		
-			
+		//the resulting string is also a mathematical expression(without parenthesis) that needs to 
+		//be simplified
 		input = calculate.simplify(input);
 		
+		//replaced the x with the +- unicode symbol
 		input = calculate.getoutputformat(input);
 		
 		
@@ -35,9 +39,10 @@ public class calculate {
 	//parenthesis methods
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	//given an expression in parenthesis it will simplify the expression and remove the parenthesis
+	//given an expression with parenthesis it will simplify the expression and remove the parenthesis
 	public static String simplifyparenthesis(String input)
 	{
+		//remove parenthesis
 		input = input.replace("(", "");
 		input = input.replace(")", "");
 		
@@ -58,6 +63,7 @@ public class calculate {
 		output = input.substring(open, close);
 		return output;
 	}
+	//gets substring that is left of the substring that gets calculated
 	public static String getleftofparenthesisstring(String input)
 	{
 		int open=0;
@@ -68,6 +74,7 @@ public class calculate {
 		output = input.substring(0, open);
 		return output;
 	}
+	//returns the substring right of the substring that gets calculated
 	public static String getrightofparenthesisstring(String input)
 	{
 		int close=0;
@@ -82,6 +89,7 @@ public class calculate {
 		return output;
 	}
 	
+	//finds the index of the rightmost openparenthesis
 	public static int findopenparenthesis(String input)
 	{
 		//returns index of the last open parenthesis (
@@ -100,7 +108,7 @@ public class calculate {
 		return openparenthesisindex; 
 	}
 	
-	//find index of first close parenthesis
+	//find index of first close parenthesis right of the rightmost open parenthesis
 	public static int findcloseparenthesis(String input, int startingch)
 	{
 		int count = startingch;
